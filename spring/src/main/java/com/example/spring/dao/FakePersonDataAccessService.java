@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/*
+    repository components are typically used for database access and provide a way to interact with a data store,
+    such as a database, using CRUD (Create, Read, Update, Delete) operations.
+ */
 @Repository("fakeDao")
 public class FakePersonDataAccessService implements PersonDao{
     private static List<Person> DB = new ArrayList<>();

@@ -1,24 +1,33 @@
 package com.example.spring.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
-import java.util.UUID;
-
-// model means who is making a request on the app, in this case is just a person
-// jsonproperty tag is used to map json property names to the corresponding fields of the Person class.
-
+@Entity
+@Table(name = "persons")
 public class Person {
-    private final UUID id;
-    private final String name;
-    public Person(@JsonProperty("id") UUID id,
-                  @JsonProperty("name") String name) {
-        this.id = id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "name")
+    private String name;
+    public Person(){}
+    public Person(String name){
         this.name = name;
     }
-    public UUID getId() {
+    public long getId() {
         return id;
     }
     public String getName() {
         return name;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    @Override
+    public String toString(){
+        return "ID: " + id + " , name: " + name;
     }
 }
